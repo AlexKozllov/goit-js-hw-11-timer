@@ -33,10 +33,14 @@ class CountdownTimer {
       this.days.children[3].children[0].textContent = this.getSecs(time);
     }
   }
+  setTime() {
+    this.deltaTime = this.targetDate - Date.now();
+    this.updateClockface(this.deltaTime);
+  }
   start() {
+    this.setTime();
     this.interval = setInterval(() => {
-      this.deltaTime = this.targetDate - Date.now();
-      this.updateClockface(this.deltaTime);
+      this.setTime();
     }, 1000);
   }
 }
